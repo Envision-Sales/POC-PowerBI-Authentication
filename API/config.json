@@ -1,0 +1,28 @@
+{
+    "credentials": {
+        "tenantName": "apps4envisionb2cdev.onmicrosoft.com",
+        "tenantID": "5a75a9e1-f5c7-41db-96c9-dd43a13961c1",
+        "clientID": "84fb5c0b-0971-4ffe-80d2-906982a4ee54"
+    },
+    "policies": {
+        "policyName": "B2C_1A_DIT01_SIGNUP_SIGNIN"
+    },
+    "metadata": {
+        "b2cDomain": "apps4envisionb2cdev.b2clogin.com",
+        "authority": "login.microsoftonline.com",
+        "discovery": ".well-known/openid-configuration",
+        "version": "v2.0"
+    },
+    "settings": {
+        "isB2C": true,
+        "validateIssuer": false,
+        "passReqToCallback": false,
+        "loggingLevel": "info"
+    },
+    "protectedRoutes": {
+        "hello": {
+            "endpoint": "/hello",
+            "scopes": ["user_impersonation"]
+        }
+    }
+}
