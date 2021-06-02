@@ -18,6 +18,9 @@
 | `API/index.js`      | Main application logic of custom web API.           |
 
 
+## SPA/authConfig.js and API/config.js
+
+  Please always discuss with ##Srujan for the setting of SPA/authConfig.js and API/config.js. 
 
 ## Setup
 
