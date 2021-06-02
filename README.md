@@ -6,7 +6,6 @@
 1. The access token is used as a bearer token to authorize the user to call the Node.js web API protected **Azure AD B2C**.
 1. The protected web API responds with the claims in the **Access Token**.
 
-![Overview](./ReadmeFiles/topology.png)
 
 ## Contents
 
