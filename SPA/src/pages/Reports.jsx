@@ -51,20 +51,9 @@ function Reports() {
 
   return (
     <div className="App">
-      {report && <PowerBIEmbed
-          embedConfig = {{
-            type: 'report',   // Supported types: report, dashboard, tile, visual and qna
-            id: report.id, 
-            embedUrl: report.url,
-            accessToken: report.token,    // Keep as empty string, null or undefined
-            tokenType: models.TokenType.Embed
-          }}
-          cssClassName= {"report-style-class"}
-          pageView={'fitToWidth'}
-        
-     />
-    }
+     
 
+<h2>POWER BI NEW REPORT _ </h2>
 {newReport && <PowerBIEmbed
           embedConfig = {{
             type: 'report',   // Supported types: report, dashboard, tile, visual and qna
@@ -79,6 +68,23 @@ function Reports() {
      />
     
         }
+
+
+     <h2>POWER BI OLD  REPORT By NIGEL _ </h2>
+
+{report && <PowerBIEmbed
+          embedConfig = {{
+            type: 'report',   // Supported types: report, dashboard, tile, visual and qna
+            id: report.id, 
+            embedUrl: report.url,
+            accessToken: report.token,    // Keep as empty string, null or undefined
+            tokenType: models.TokenType.Embed
+          }}
+          cssClassName= {"report-style-class"}
+          pageView={'fitToWidth'}
+        
+     />
+    }
 
     </div>
   );
