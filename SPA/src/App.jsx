@@ -13,6 +13,7 @@ import { b2cPolicies } from "./authConfig";
 import { PageLayout } from "./components/PageLayout";
 import { Hello } from "./pages/Hello";
 
+import  Dashboards from "./pages/Dashboards";
 import "./styles/App.css";
 
 
@@ -77,6 +78,9 @@ const Pages = () => {
     <Switch>
       <Route path="/hello">
         <Hello />
+      </Route>
+      <Route path="/Dashboards">
+        <Dashboards />
       </Route>
     </Switch>
   )

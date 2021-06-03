@@ -7,7 +7,6 @@ function Reports() {
   const [newReport, setNewReport] = useState(null)
  
   useEffect(() => {
-    //fetch("http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/reports/a322c914-0bce-46ac-a6d6-d2955a25d13f",{ == new 
       fetch("http://20.65.42.94:8080/v1/groups/85a5e89d-5222-42dd-aaf1-541f4e53c6d5/reports/e5bd202c-dfb7-42a7-b754-e861e8e81833",{
       headers: {
         method: 'GET',
@@ -27,7 +26,6 @@ function Reports() {
 
   useEffect(() => {
     fetch("http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/reports/a322c914-0bce-46ac-a6d6-d2955a25d13f",{
-      //fetch("http://20.65.42.94:8080/v1/groups/85a5e89d-5222-42dd-aaf1-541f4e53c6d5/reports/e5bd202c-dfb7-42a7-b754-e861e8e81833",{
       headers: {
         method: 'GET',
         'vnd.insightlens.io.clientid': '10eee1c1-5349-4596-b54f-a4f6639c2395',
