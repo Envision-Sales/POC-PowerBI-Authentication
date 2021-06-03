@@ -45,16 +45,11 @@ function Reports() {
   }, [])
 
 
- 
-
-  console.log(report,'report')
-
   return (
     <div className="App">
-     
-
-<h2>POWER BI NEW REPORT _ </h2>
-{newReport && <PowerBIEmbed
+    
+       <h2>POWER BI NEW REPORT _ </h2>
+        {newReport && <PowerBIEmbed
           embedConfig = {{
             type: 'report',   // Supported types: report, dashboard, tile, visual and qna
             id: newReport.id, 
@@ -64,15 +59,13 @@ function Reports() {
           }}
           cssClassName= {"report-style-class"}
           pageView={'fitToWidth'}
-        
-     />
-    
+           />
         }
 
 
-     <h2>POWER BI OLD  REPORT By NIGEL _ </h2>
+     <h2>POWER BI OLD  REPORT By NIGEL  </h2>
 
-{report && <PowerBIEmbed
+      {report && <PowerBIEmbed
           embedConfig = {{
             type: 'report',   // Supported types: report, dashboard, tile, visual and qna
             id: report.id, 
@@ -82,10 +75,8 @@ function Reports() {
           }}
           cssClassName= {"report-style-class"}
           pageView={'fitToWidth'}
-        
-     />
+        />
     }
-
     </div>
   );
 }
