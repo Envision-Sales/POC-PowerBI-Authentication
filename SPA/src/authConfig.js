@@ -93,4 +93,8 @@ export const protectedResources = {
         endpoint: "http://localhost:5000/hello",
         scopes: ["https://apps4envisionb2cdev.onmicrosoft.com/84fb5c0b-0971-4ffe-80d2-906982a4ee54/user_impersonation"],
     },
+    apiDashboard: {
+        endpoint: "http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/dashboards/0179a49f-c45b-43c1-85dd-4152ca33b2c8",
+        scopes: ["https://apps4envisionb2cdev.onmicrosoft.com/84fb5c0b-0971-4ffe-80d2-906982a4ee54/user_impersonation"],
+    },
 }
