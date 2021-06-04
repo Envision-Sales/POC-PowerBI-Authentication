@@ -1,5 +1,10 @@
+body{
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
+  
 }
 
 .data-area-div {
