@@ -2,9 +2,9 @@ import React , {useState, useEffect} from 'react'
 import { models } from 'powerbi-client';
 import { PowerBIEmbed } from 'powerbi-client-react';
 /* API Logic with Token */
-import { MsalAuthenticationTemplate, useMsal, useAccount } from "@azure/msal-react";
+import { useMsal, useAccount } from "@azure/msal-react";
 import { InteractionRequiredAuthError, InteractionType } from "@azure/msal-browser";
-import { loginRequest, protectedResources } from "../authConfig";
+import {protectedResources } from "../authConfig";
 import { callApiWithTokenForReports } from "../fetch";
 /* end API Logic with Token */
 
@@ -31,7 +31,7 @@ function Dashboards() {
             if (error instanceof InteractionRequiredAuthError) {
                 if (account && inProgress === "none") {
                     instance.acquireTokenPopup({
-                        scopes: protectedResources.apiHello.scopes,
+                        scopes: protectedResources.apiDashboard.scopes,
                     }).then((response) => {
                         callApiWithTokenForReports(response.accessToken, protectedResources.apiDashboard.endpoint)
                             .then(response => setReport(response));
@@ -42,26 +42,7 @@ function Dashboards() {
     }
 }, [account, inProgress, instance]);
 
- 
-  /* useEffect(() => {
-      fetch("http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/dashboards/0179a49f-c45b-43c1-85dd-4152ca33b2c8",{
-      headers: {
-        method: 'GET',
-        'vnd.insightlens.io.clientid': '10eee1c1-5349-4596-b54f-a4f6639c2395',
-        'vnd.insightlens.io.tenantid': 'c2fe5db4-d460-45c4-ac74-7b583a75ae26'
-      },    
-    }).then(res => res.json())
-      .then(
-        (result) => {
-          setReport(result);
-        },
-        (error) => {
-          
-        }
-      )
-  }, [])*/
 
- 
   return (
     <div className="App">
       {report && <PowerBIEmbed

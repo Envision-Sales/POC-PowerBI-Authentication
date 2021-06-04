@@ -1,47 +1,71 @@
 import React , {useState, useEffect} from 'react'
 import { models } from 'powerbi-client';
 import { PowerBIEmbed } from 'powerbi-client-react';
+/* API Logic with Token */
+import { useMsal, useAccount } from "@azure/msal-react";
+import { InteractionRequiredAuthError, InteractionType } from "@azure/msal-browser";
+import {protectedResources } from "../authConfig";
+import { callApiWithTokenForReports } from "../fetch";
+/* end API Logic with Token */
 
 function Reports() {
   const [report, setReport] = useState(null)
   const [newReport, setNewReport] = useState(null)
- 
-  useEffect(() => {
-      fetch("http://20.65.42.94:8080/v1/groups/85a5e89d-5222-42dd-aaf1-541f4e53c6d5/reports/e5bd202c-dfb7-42a7-b754-e861e8e81833",{
-      headers: {
-        method: 'GET',
-        'vnd.insightlens.io.clientid': '10eee1c1-5349-4596-b54f-a4f6639c2395',
-        'vnd.insightlens.io.tenantid': 'c2fe5db4-d460-45c4-ac74-7b583a75ae26'
-      },    
-    }).then(res => res.json())
-      .then(
-        (result) => {
-          setReport(result);
-        },
-        (error) => {
-          
-        }
-      )
-  }, [])
+  /* API Logic with Token */
+  const { instance, accounts, inProgress } = useMsal();
+  const account = useAccount(accounts[0] || {});
+/* end API Logic with Token */
 
-  useEffect(() => {
-    fetch("http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/reports/a322c914-0bce-46ac-a6d6-d2955a25d13f",{
-      headers: {
-        method: 'GET',
-        'vnd.insightlens.io.clientid': '10eee1c1-5349-4596-b54f-a4f6639c2395',
-        'vnd.insightlens.io.tenantid': 'c2fe5db4-d460-45c4-ac74-7b583a75ae26'
-      },    
-    }).then(res => res.json())
-      .then(
-        (result) => {
-          setNewReport(result);
-        },
-        (error) => {
-          
-        }
-      )
-  }, [])
+useEffect(() => {
+  if (account && inProgress === "none" && !report) {
+      instance.acquireTokenSilent({
+          scopes: protectedResources.apiHello.scopes,
+          account: account
+      }).then((response) => {
+          console.log(response,'response')
+          callApiWithTokenForReports(response.accessToken, protectedResources.apiReportDmytro.endpoint)
+              .then(response => setReport(response));
+      }).catch((error) => {
+          // in case if silent token acquisition fails, fallback to an interactive method
+          if (error instanceof InteractionRequiredAuthError) {
+              if (account && inProgress === "none") {
+                  instance.acquireTokenPopup({
+                      scopes: protectedResources.apiReportDmytro.scopes,
+                  }).then((response) => {
+                      callApiWithTokenForReports(response.accessToken, protectedResources.apiReportDmytro.endpoint)
+                          .then(response => setReport(response));
+                  }).catch(error => console.log(error));
+              }
+          }
+      });
+  }
+}, [account, inProgress, instance]);
 
+
+useEffect(() => {
+  if (account && inProgress === "none" && !newReport) {
+      instance.acquireTokenSilent({
+          scopes: protectedResources.apiHello.scopes,
+          account: account
+      }).then((response) => {
+          console.log(response,'response')
+          callApiWithTokenForReports(response.accessToken, protectedResources.apiReportNigel.endpoint)
+              .then(response => setNewReport(response));
+      }).catch((error) => {
+          // in case if silent token acquisition fails, fallback to an interactive method
+          if (error instanceof InteractionRequiredAuthError) {
+              if (account && inProgress === "none") {
+                  instance.acquireTokenPopup({
+                      scopes: protectedResources.apiReportNigel.scopes,
+                  }).then((response) => {
+                      callApiWithTokenForReports(response.accessToken, protectedResources.apiDashboard.endpoint)
+                          .then(response => setNewReport(response));
+                  }).catch(error => console.log(error));
+              }
+          }
+      });
+  }
+}, [account, inProgress, instance]);
 
   return (
     <div className="App">

@@ -97,4 +97,12 @@ export const protectedResources = {
         endpoint: "http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/dashboards/0179a49f-c45b-43c1-85dd-4152ca33b2c8",
         scopes: ["https://apps4envisionb2cdev.onmicrosoft.com/84fb5c0b-0971-4ffe-80d2-906982a4ee54/user_impersonation"],
     },
+    apiReportNigel: {
+        endpoint: "http://20.65.42.94:8080/v1/groups/47b7a5cd-3616-4924-bf70-d44bec06fff2/reports/a322c914-0bce-46ac-a6d6-d2955a25d13f",
+        scopes: ["https://apps4envisionb2cdev.onmicrosoft.com/84fb5c0b-0971-4ffe-80d2-906982a4ee54/user_impersonation"],
+    },
+    apiReportDmytro: {
+        endpoint: "http://20.65.42.94:8080/v1/groups/85a5e89d-5222-42dd-aaf1-541f4e53c6d5/reports/e5bd202c-dfb7-42a7-b754-e861e8e81833",
+        scopes: ["https://apps4envisionb2cdev.onmicrosoft.com/84fb5c0b-0971-4ffe-80d2-906982a4ee54/user_impersonation"],
+    },
 }
