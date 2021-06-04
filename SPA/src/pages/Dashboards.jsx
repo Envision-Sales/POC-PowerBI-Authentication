@@ -28,7 +28,7 @@ function Dashboards() {
     <div className="App">
       {report && <PowerBIEmbed
           embedConfig = {{
-            type: 'report',   // Supported types: report, dashboard, tile, visual and qna
+            type: 'dashboard',   // Supported types: report, dashboard, tile, visual and qna
             id: report.id, 
             embedUrl: report.url,
             accessToken: report.token,    // Keep as empty string, null or undefined
